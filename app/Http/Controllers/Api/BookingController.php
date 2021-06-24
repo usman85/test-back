@@ -71,7 +71,7 @@ class BookingController extends Controller
      * Update status of requested booking
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param   $bookingId
+     * @param    $bookingId
      * @return \Illuminate\Http\Response
      */
     public function updateStatus(Request $request, $bookingId)
