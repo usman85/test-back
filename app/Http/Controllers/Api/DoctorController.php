@@ -4,10 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Doctor;
-use App\Models\Availability;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
+
 class DoctorController extends Controller
 {
     /**
@@ -16,13 +14,13 @@ class DoctorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {                
+    {
         /**
          * return id, name from from database
          */
         return Doctor::all([
-                'id','name'
-            ]);        
+            'id', 'name'
+        ]);
     }
 
     /**
@@ -31,19 +29,19 @@ class DoctorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function availabilities(Request $request, $id)
-    {                 
-        $doctor = Doctor::find($id);
+    {
+        $doctor = Doctor::find($id); // findOrFail() ?
         // make sure doctor id exist
-        if($doctor){
+        if ($doctor) {
             // get all avalabilities of requested doctor
-            return $doctor->availabilities()->get('start');                        
-        }        
-        if (!$doctor) {
-           // return $this->error('Credentials not match', 401);
+            return $doctor->availabilities()->get('start');
         }
-        
+        if (!$doctor) {
+            // return $this->error('Credentials not match', 401);
+
+            // nothing to return here?
+        }
+
+        // Case when agenda is doctolib or clicrdv not handled
     }
-
-
-    
 }
